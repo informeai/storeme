@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+:root{
+    --nav-color: rgba(0, 112, 255,1);
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+body{
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100vw;
+    height: 100vh;
+}
+/*NAV*/
+section#nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100px;
+    padding: 10px;
+    height: 100vh;
+    background-color: var(--nav-color);
+}
+section#nav ul{
+    display: flex;
+    flex-direction: column;
+    background-color: var(--nav-color);
+    gap: 1rem;
+    list-style: none;
+    width: 100%;
+}
+#nav ul li{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    color: rgba(255,255,255, 0.8);
+    transition: 0.3s;
+    font-weight: 300;
+    cursor: pointer;
+}
+#nav ul li.active{
+    color: rgba(255,255,255, 1);
+}
+#nav ul li ion-icon{
+    font-size: 0.9rem;
+    transition: 0.3s;
+    color: rgba(255,255,255, 0.8);
+}
+
+#nav ul li:hover, #nav ul li.active ion-icon, #nav ul li:hover ion-icon{
+    color: rgba(255,255,255, 1);
+}
+/*LIST*/
+section#list{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+}
+#providers{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    list-style: none;
+    gap: 1rem;
+    width: 100%;
+    padding: 10px;
+}
+#providers li{
+    cursor: pointer;
+    transition: 0.3s;
+    color: rgba(0,0,0,0.4);
+}
+#providers li.active{
+    color: rgba(0,0,0,0.8);
+}
+#providers li:hover{
+    color: rgba(0,0,0,0.8);
+}
+#objects{
+    list-style: none;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 2rem;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    flex-wrap: wrap;
+}
+.docs{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    color: rgba(34, 20, 20, 0.8);
+    cursor: pointer;
+}
+.docs ion-icon{
+    transition: 0.3s;
+    color: rgba(0,0,0,0.7);
+    font-weight: 300;
+    font-size: 2.5rem;
+}
+.docs span{
+    transition: 0.3s;
+    width: 100px;
+    max-lines: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
+    color: rgba(0,0,0,0.7);
+}
+.docs:hover ion-icon, .docs:hover span{
+    color:rgba(0, 112, 255,0.9);
+
+}
+/*CONFIG*/
+section#settings{
+    display: none;
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+section#settings .title{
+    color: var(--nav-color);
+    font-size: 2rem;
+}
+section#settings form{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    gap: 2rem;
+}
+section#settings input[name=save]{
+    background-color: var(--nav-color);
+    padding: 5px 8px;
+    border-radius: 3px;
+    max-width: 100px;
+    letter-spacing: 1px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+
+}
+.credentials{
+    padding: 5px 8px;
+    outline-color: var(--nav-color);
+    color: rgba(0, 112, 255,0.9);
+    width: 50%;
+    text-overflow: ellipsis;
+    max-lines: 1;
+    caret-color: var(--nav-color);
+    font-size: 1rem;
+    border: 1px solid rgba(0,0,0,0.3);
+    border-radius: 5px;
+}
+/*LOADING*/
+section#loading{
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.8);
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+section#loading span{
+    width: 5px;
+    height: 25px;
+    border-radius: 2px;
+    background-color: var(--nav-color);
+    animation: loading 1s linear infinite;
+}
+section#loading span:nth-child(1){
+    animation-delay: 0.3s;
+}
+section#loading span:nth-child(2){
+    animation-delay: 0.6s;
+}
+section#loading span:nth-child(3){
+    animation-delay: 0.9s;
+}
+
+@keyframes loading{
+    0%,100%{
+        height: 25px;
+    }
+    50%{
+        height: 45px;
+    }
+}

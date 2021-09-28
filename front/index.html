@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Ionicons-->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Storeme</title>
+</head>
+<body>
+    <section id="nav">
+        <ul>
+            <li id="home" class="active"><ion-icon name="home-outline" size="small"></ion-icon> Home</li>
+            <li id="config"><ion-icon name="settings-outline" size="small"></ion-icon> Config</li>
+        </ul>
+    </section>
+    <section id="list">
+        <ul id="providers">
+            <li id="gcp" class="active">Google Storage</li>
+            <li id="aws">Aws</li>
+        </ul>
+        <ul id="objects">
+            <li class="docs"><ion-icon name="folder-outline"></ion-icon><span>directorysdfsdfsadfasdfsadfsdfsdf</span></li>
+            <li class="docs"><ion-icon name="document-outline"></ion-icon><span>directorysdfsdfsdfsdfsdfsfddsdf</span></li>
+        </ul>
+    </section>
+    <section id="settings">
+        <div class="title">Config</div>
+        <form action="/cred/save" method="POST">
+            <input class="credentials" type="text" name="cred-gcp" placeholder="Path of Credentials the GCP">
+            <input class="credentials" type="text" name="cred-aws" placeholder="Path of Credentials the AWS">
+            <input type="submit" name="save" value="Salvar">
+        </form>
+    </section>
+    <section id="loading">
+        <span></span>
+        <span></span>
+        <span></span>
+    </section>
+    <script src="./js/index.js"></script>
+</body>
+</html>
