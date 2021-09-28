@@ -132,9 +132,12 @@ section#settings{
     width: 100%;
     height: 100%;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     align-items: flex-start;
     justify-content: flex-start;
+}
+section#settings span{
+    color: rgba(0,0,0,0.5);
 }
 section#settings .title{
     color: var(--nav-color);
@@ -147,7 +150,7 @@ section#settings form{
     flex-direction: column;
     gap: 2rem;
 }
-section#settings input[name=save]{
+section#settings input[id=save-config]{
     background-color: var(--nav-color);
     padding: 5px 8px;
     border-radius: 3px;

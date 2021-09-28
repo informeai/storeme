@@ -29,11 +29,11 @@
     </section>
     <section id="settings">
         <div class="title">Config</div>
-        <form action="/cred/save" method="POST">
-            <input class="credentials" type="text" name="cred-gcp" placeholder="Path of Credentials the GCP">
-            <input class="credentials" type="text" name="cred-aws" placeholder="Path of Credentials the AWS">
-            <input type="submit" name="save" value="Salvar">
-        </form>
+            <span>Google Storage Credentials:</span>
+            <input class="credentials" type="text" id="cred-gcp" placeholder="Path of Credentials the GCP">
+            <span>Aws Storage Credentials:</span>
+            <input class="credentials" type="text" id="cred-aws" placeholder="Path of Credentials the AWS">
+            <input type="submit" id="save-config" value="Salvar">
     </section>
     <section id="loading">
         <span></span>
