@@ -1,6 +1,11 @@
+window.onload = function(){
+    listGCP()
+}
+
 let home = document.getElementById("home")
 let config = document.getElementById("config")
 let list = document.getElementById("list")
+let objects = document.getElementById("objects")
 let settings = document.getElementById("settings")
 let saveConfig = document.getElementById("save-config")
 let credGCP = document.getElementById("cred-gcp")
@@ -8,6 +13,8 @@ let credAWS = document.getElementById("cred-aws")
 let gcp = document.getElementById("gcp")
 let aws = document.getElementById("aws")
 let modalConfig = document.getElementById("modal-config")
+let upload = document.getElementById("upload")
+let file = document.getElementById("file")
 home.addEventListener("click",(e)=>{
     if(e.target.classList.contains("active")){
         e.target.classList.remove("active")
@@ -34,19 +41,21 @@ config.addEventListener("click",(e)=>{
 })
 
 gcp.addEventListener("click",(e)=>{
+    objects.innerHTML = ''
     if(e.target.classList.contains("active")){
-        e.target.classList.remove("active")
-        aws.classList.add("active")
+        aws.classList.remove("active")
+        listGCP()
     }else{
         e.target.classList.add("active")
         aws.classList.remove("active")
+        listGCP()
         
     }
 })
 aws.addEventListener("click",(e)=>{
+    objects.innerHTML = ''
     if(e.target.classList.contains("active")){
-        e.target.classList.remove("active")
-        gcp.classList.add("active")
+        gcp.classList.remove("active")
     }else{
         e.target.classList.add("active")
         gcp.classList.remove("active")
@@ -74,6 +83,34 @@ saveConfig.addEventListener("click", ()=>{
     .catch(err => console.log(err))
 })
 
+upload.addEventListener("click", (e)=>{
+    console.log(e.target)
+    file.click()
+
+})
+file.addEventListener("change",async(e)=>{
+    let formData = new FormData()
+    formData.append("file",e.target.files[0])
+    if(gcp.classList.contains("active")){
+        await fetch("/gcp/upload",{
+        method: "POST",
+        body: formData
+        })
+        .then((r) => r.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }else if(aws.classList.contains("active")){
+        await fetch("/aws/upload",{
+        method: "POST",
+        body: formData
+        })
+        .then((r) => r.json())
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    }
+    
+})
+
 function getCred(){
     fetchServer("/cred/get")
     .then(result =>{
@@ -81,6 +118,32 @@ function getCred(){
         credAWS.value = result["cred-aws"]
     })
     .catch(err => console.log(err))
+}
+async function listGCP(){
+    await fetch("/gcp/list",{
+        method: "GET"
+    })
+    .then((r)=> r.json())
+    .then((data) => {
+        createItems(data)
+    })
+    .catch(err => console.log(err))
+}
+
+async function createItems(data){
+    
+    data.list.forEach((el)=>{
+        
+        let li = document.createElement("li")
+        li.classList.add("docs")
+        let ionIcon = document.createElement("ion-icon")
+        ionIcon.setAttribute("name","document-outline")
+        let span = document.createElement("span")
+        span.innerHTML = el.split('-')[1]
+        li.appendChild(ionIcon)
+        li.appendChild(span)
+        objects.appendChild(li)
+    })
 }
 
 //fetching
