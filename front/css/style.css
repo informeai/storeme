@@ -173,6 +173,20 @@ section#settings input[id=save-config]{
     border: 1px solid rgba(0,0,0,0.3);
     border-radius: 5px;
 }
+#modal-config{
+    visibility: hidden;
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 2px;
+
+}
+#modal-config.active{
+    visibility: visible;
+}
 /*LOADING*/
 section#loading{
     display: flex;

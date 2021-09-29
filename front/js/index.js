@@ -7,6 +7,7 @@ let credGCP = document.getElementById("cred-gcp")
 let credAWS = document.getElementById("cred-aws")
 let gcp = document.getElementById("gcp")
 let aws = document.getElementById("aws")
+let modalConfig = document.getElementById("modal-config")
 home.addEventListener("click",(e)=>{
     if(e.target.classList.contains("active")){
         e.target.classList.remove("active")
@@ -27,6 +28,7 @@ config.addEventListener("click",(e)=>{
         home.classList.remove("active")
         list.style.display = "none"
         settings.style.display = "flex"
+        getCred()
 
     }
 })
@@ -64,11 +66,22 @@ saveConfig.addEventListener("click", ()=>{
     .then(result =>{
         credGCP.value = result["cred-gcp"]
         credAWS.value = result["cred-aws"]
-        alert("salvo")
+        modalConfig.classList.add("active")
+        setTimeout(() => {
+            modalConfig.classList.remove("active")
+        }, 1000);
     })
     .catch(err => console.log(err))
 })
 
+function getCred(){
+    fetchServer("/cred/get")
+    .then(result =>{
+        credGCP.value = result["cred-gcp"]
+        credAWS.value = result["cred-aws"]
+    })
+    .catch(err => console.log(err))
+}
 
 //fetching
 async function fetchServer (url="", data={}){
