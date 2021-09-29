@@ -1,6 +1,6 @@
 const express = require("express")
 const path = require("path")
-const {configSave, configGet} = require("./controllers")
+const {configSave, configGet} = require("../controllers/controllers")
 const router = express.Router()
 const indexHTML = path.join(__dirname,"front","index.html")
 router.get("/", (req,res)=>{

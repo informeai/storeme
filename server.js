@@ -1,7 +1,7 @@
 //imports
 const express = require("express")
 const app = express()
-const router = require("./router")
+const router = require("./routers/router")
 const PORT = 8000
 
 //midlewares

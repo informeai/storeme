@@ -1,4 +1,4 @@
-const {saveConfig, getConfig, updateConfig, verifyConfig} = require("./database")
+const {saveConfig, getConfig, updateConfig, verifyConfig} = require("../database/database")
 
 async function configSave(data){
     let resp = {}
