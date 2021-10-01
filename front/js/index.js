@@ -10,6 +10,7 @@ let settings = document.getElementById("settings")
 let saveConfig = document.getElementById("save-config")
 let credGCP = document.getElementById("cred-gcp")
 let credAWS = document.getElementById("cred-aws")
+let pathDownload = document.getElementById("path-download")
 let gcp = document.getElementById("gcp")
 let aws = document.getElementById("aws")
 let modalConfig = document.getElementById("modal-config")
@@ -67,14 +68,17 @@ saveConfig.addEventListener("click", ()=>{
     data = {
         "cred-gcp": credGCP.value,
         "cred-aws": credAWS.value,
+        "path-download": pathDownload.value,
         "key": "config-cred"
     }
     credGCP.value = ''
     credAWS.value = ''
+    pathDownload.value = ''
     fetchServer("/cred/save",data)
     .then(result =>{
         credGCP.value = result["cred-gcp"]
         credAWS.value = result["cred-aws"]
+        pathDownload.value = result["path-download"]
         modalConfig.classList.add("active")
         setTimeout(() => {
             modalConfig.classList.remove("active")
@@ -116,6 +120,7 @@ function getCred(){
     .then(result =>{
         credGCP.value = result["cred-gcp"]
         credAWS.value = result["cred-aws"]
+        pathDownload.value = result["path-download"]
     })
     .catch(err => console.log(err))
 }

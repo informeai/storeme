@@ -33,9 +33,11 @@
     <section id="settings">
         <div class="title">Config</div>
             <span>Google Storage Credentials:</span>
-            <input class="credentials" type="text" id="cred-gcp" placeholder="Path of Credentials the GCP">
+            <input class="credentials" type="text" id="cred-gcp" autocomplete="off" placeholder="Path of Credentials the GCP">
             <span>Aws Storage Credentials:</span>
-            <input class="credentials" type="text" id="cred-aws" placeholder="Path of Credentials the AWS">
+            <input class="credentials" type="text" id="cred-aws" autocomplete="off" placeholder="Path of Credentials the AWS">
+            <span>Path Download:</span>
+            <input class="credentials" type="text" id="path-download" autocomplete="off" placeholder="Path of Downloads">
             <input type="submit" id="save-config" value="Salvar">
             <div id="modal-config">Salvo</div>
     </section>
