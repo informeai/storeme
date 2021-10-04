@@ -1,5 +1,6 @@
 const crypto = require("crypto")
 const multer = require("multer")
+const {createBucketGCP} = require("../services/gcp")
 const storageGCP = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './tmp/gcp')
@@ -7,6 +8,7 @@ const storageGCP = multer.diskStorage({
   filename: function (req, file, cb) {
     const hashName = crypto.randomBytes(10).toString('hex')
     cb(null, hashName + '-' + file.originalname)
+    createBucketGCP()
   }
 })
 
