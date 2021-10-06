@@ -26,4 +26,12 @@ const verifyBucketsGCP = async()=>{
     
 }
 
-module.exports = {createBucketGCP}
+const addFileBucketGCP = async(fileName, filePath)=>{
+    await createBucketGCP()
+    await storage.bucket(bucketName).upload(filePath,{
+        destination: fileName
+    }).catch(e => console.log(e))
+
+}
+
+module.exports = {addFileBucketGCP}

@@ -101,7 +101,11 @@ file.addEventListener("change",async(e)=>{
         body: formData
         })
         .then((r) => r.json())
-        .then(data => console.log(data))
+        .then((data) => {
+            if(data.status === "ok"){
+                listGCP()
+            }
+        })
         .catch(err => console.log(err))
     }else if(aws.classList.contains("active")){
         await fetch("/aws/upload",{
@@ -137,8 +141,8 @@ async function listGCP(){
 
 async function createItems(data){
     
+    objects.innerHTML = ''
     data.list.forEach((el)=>{
-        
         let li = document.createElement("li")
         li.classList.add("docs")
         let ionIcon = document.createElement("ion-icon")
