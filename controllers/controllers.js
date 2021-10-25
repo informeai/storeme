@@ -1,5 +1,5 @@
 const {saveConfig, getConfig, updateConfig, verifyConfig} = require("../database/database")
-const {listGCP} = require("../utils/list")
+const {listGCP, listAWS} = require("../utils/list")
 
 async function configSave(data){
     let resp = {}
@@ -46,4 +46,14 @@ async function getFilesGCP(){
     return files
 }
 
-module.exports = {configSave, configGet, getFilesGCP}
+async function getFilesAWS(){
+    let files = []
+    await listAWS()
+    .then((f)=>{
+        files = f
+    })
+    .catch(err => console.log(err))
+    return files
+}
+
+module.exports = {configSave, configGet, getFilesGCP, getFilesAWS}

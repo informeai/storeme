@@ -7,4 +7,10 @@ async function listGCP(){
     return fs.readdirSync(directoryPath)
 }
 
-module.exports = {listGCP}
+async function listAWS(){
+    const directoryPath = path.resolve(__dirname, '..',"tmp","aws");
+    
+    return fs.readdirSync(directoryPath)
+}
+
+module.exports = {listGCP, listAWS}

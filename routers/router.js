@@ -1,7 +1,7 @@
 const path = require("path")
 const express = require("express")
 const {uploadGCP, uploadAWS} = require("../utils/multer")
-const {configSave, configGet, getFilesGCP} = require("../controllers/controllers")
+const {configSave, configGet, getFilesGCP, getFilesAWS} = require("../controllers/controllers")
 const router = express.Router()
 const indexHTML = path.join(__dirname,"front","index.html")
 router.get("/", (req,res)=>{
@@ -26,6 +26,10 @@ router.get("/gcp/list", async(req,res)=>{
 router.post("/aws/upload", uploadAWS.single("file"), async(req,res)=>{
     
     res.status(200).json({"status":"ok"})
+})
+router.get("/aws/list", async(req,res)=>{
+    let files = await getFilesAWS()
+    res.status(200).json({"list":files})
 })
 
 module.exports = router

@@ -57,9 +57,11 @@ aws.addEventListener("click",(e)=>{
     objects.innerHTML = ''
     if(e.target.classList.contains("active")){
         gcp.classList.remove("active")
+        listAWS()
     }else{
         e.target.classList.add("active")
         gcp.classList.remove("active")
+        listAWS()
         
     }
 })
@@ -113,7 +115,11 @@ file.addEventListener("change",async(e)=>{
         body: formData
         })
         .then((r) => r.json())
-        .then(data => console.log(data))
+        .then((data) => {
+            if(data.status === 'ok'){
+                listAWS()
+            }
+        })
         .catch(err => console.log(err))
     }
     
@@ -130,6 +136,17 @@ function getCred(){
 }
 async function listGCP(){
     await fetch("/gcp/list",{
+        method: "GET"
+    })
+    .then((r)=> r.json())
+    .then((data) => {
+        createItems(data)
+    })
+    .catch(err => console.log(err))
+}
+
+async function listAWS(){
+    await fetch("/aws/list",{
         method: "GET"
     })
     .then((r)=> r.json())
