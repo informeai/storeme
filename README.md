@@ -1,4 +1,10 @@
 # Storeme  
-Storage of files using many providers.
+Storage of files using many providers.  
+# Preview
+![image](/storeme.png)  
+# Install
+Clone of repository.  
+# Usage
+Execute `yarn dev` or `npm dev`.
 
-by Wellingto Gadelha :heart:
+by Wellington Gadelha :heart:
